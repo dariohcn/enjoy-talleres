@@ -4,7 +4,10 @@ async function rpc(name:string,body:unknown){
  if(!r.ok)throw Error('Database operation failed');return r.status===204?null:r.json();
 }
 async function authorized(value:string){
- const expected=env('REMINDER_JOB_SECRET');if(expected.length<32||expected.length!==value.length)return false;
+ if(value.length<32||value.length>256)return false;
+ let expected=env('REMINDER_JOB_SECRET');
+ if(!expected){try{expected=await rpc('enjoy_reminder_secret',{}) as string}catch{return false}}
+ if(expected.length<32||expected.length!==value.length)return false;
  const e=new TextEncoder(),a=new Uint8Array(await crypto.subtle.digest('SHA-256',e.encode(value))),b=new Uint8Array(await crypto.subtle.digest('SHA-256',e.encode(expected)));
  let difference=0;for(let i=0;i<a.length;i++)difference|=a[i]^b[i];return difference===0;
 }

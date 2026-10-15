@@ -1,0 +1,13 @@
+import {readFile} from 'node:fs/promises';import {stripTypeScriptTypes} from 'node:module';import {runInNewContext} from 'node:vm';import {webcrypto} from 'node:crypto';import assert from 'node:assert/strict';
+const source=stripTypeScriptTypes(await readFile(new URL('../supabase/functions/appointment-reminders/index.ts',import.meta.url),'utf8')),secret='test-only-secret-never-for-live-000000';
+let handler,calls=[],jobs=[],providerStatus=200;const values={REMINDER_JOB_SECRET:secret,SUPABASE_URL:'https://example.supabase.co',SUPABASE_SERVICE_ROLE_KEY:'mock-key',WHATSAPP_MODE:'test'};
+runInNewContext(source,{Deno:{env:{get:k=>values[k]},serve:f=>{handler=f}},crypto:webcrypto,TextEncoder,Uint8Array,Response,AbortSignal,fetch:async(url,options)=>{const body=JSON.parse(options.body);calls.push({url,body});if(url.endsWith('/enjoy_claim_reminders'))return Response.json(jobs);if(url.endsWith('/enjoy_finish_reminder'))return new Response(null,{status:204});return Response.json(providerStatus===200?{messages:[{id:'mock-id'}]}:{error:{}},{status:providerStatus})}});
+const request=()=>new Request('https://example.invalid',{method:'POST',headers:{'x-job-secret':secret}});
+assert.equal((await handler(new Request('https://example.invalid',{method:'POST'}))).status,401);assert.equal(calls.length,0);
+assert.equal((await handler(new Request('https://example.invalid',{method:'GET'}))).status,405);
+assert.equal((await handler(request())).status,200);assert.equal(calls.length,1);assert.equal(calls[0].body.live_mode,false);
+values.WHATSAPP_MODE='live';const before=calls.length;assert.equal((await handler(request())).status,503);assert.equal(calls.length,before);
+Object.assign(values,{WHATSAPP_API_VERSION:'v99.0',WHATSAPP_PHONE_NUMBER_ID:'123',WHATSAPP_ACCESS_TOKEN:'mock-token',WHATSAPP_TEMPLATE_NAME:'mock-template'});jobs=[{id:'job1',phone:'593990000001',parameters:['Taller','Cliente','TEST-1','15/10/2026','10:00','Revisión']}];calls=[];
+assert.equal((await(await handler(request())).json()).accepted,1);assert.equal(calls.at(-1).body.outcome,'accepted');assert.equal(calls.find(x=>x.url.startsWith('https://graph.facebook.com/')).body.template.components[0].parameters.length,6);
+providerStatus=500;calls=[];await handler(request());assert.equal(calls.at(-1).body.outcome,'uncertain');providerStatus=400;calls=[];await handler(request());assert.equal(calls.at(-1).body.outcome,'failed');
+console.log('8 comprobaciones del procesador superadas. Todas las peticiones simuladas.');

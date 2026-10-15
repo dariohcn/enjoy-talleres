@@ -1,0 +1,67 @@
+import {PGlite} from '@electric-sql/pglite';
+import {readFile} from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const db=new PGlite();let count=0;
+const check=(actual,expected)=>{assert.deepEqual(actual,expected);count++};
+async function denied(fn){await assert.rejects(fn);count++}
+async function user(id,role='authenticated'){await db.exec('reset role');await db.query("select set_config('request.jwt.claim.sub',$1,false),set_config('request.jwt.claim.role',$2,false)",[id,role]);await db.exec('set role '+role)}
+async function rpc(action,payload={}){return(await db.query('select public.enjoy_api($1,$2::jsonb) result',[action,JSON.stringify(payload)])).rows[0].result}
+const admin='10000000-0000-0000-0000-000000000001',one='10000000-0000-0000-0000-000000000002',two='10000000-0000-0000-0000-000000000003';
+try{
+ await db.exec(`create role anon;create role authenticated;create role service_role;create schema auth;
+ create table auth.users(id uuid primary key,email text,raw_user_meta_data jsonb);
+ create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;
+ create function auth.role() returns text language sql stable as $$select current_setting('request.jwt.claim.role',true)$$;
+ grant usage on schema auth to anon,authenticated,service_role;grant execute on all functions in schema auth to anon,authenticated,service_role;`);
+ await db.exec(await readFile(new URL('../supabase/INSTALAR.sql',import.meta.url),'utf8'));count++;
+ for(const [id,email] of [[admin,'admin@example.test'],[one,'one@example.test'],[two,'two@example.test']])await db.query('insert into auth.users values($1,$2,$3)',[id,email,JSON.stringify({name:'Taller prueba',owner:'Responsable prueba',location:'Loja',role:'admin',phone:'593990000000',whatsappOptIn:true})]);
+ check((await db.query("select count(*)::int n from enjoy.profiles where role='admin'")).rows[0].n,0);
+ await db.query("update enjoy.profiles set role='admin',workshop=null where id=$1",[admin]);
+ await denied(()=>db.query("update enjoy.profiles set role='admin',workshop=null where id=$1",[two]));
+ const profiles=(await db.query('select id,workshop from enjoy.profiles')).rows,w1=profiles.find(x=>x.id===one).workshop,w2=profiles.find(x=>x.id===two).workshop;
+ await user(one);await denied(()=>rpc('session'));
+ await user(admin);await rpc('decision',{id:w1,status:'approved'});await rpc('decision',{id:w2,status:'approved'});
+ await user(one);check((await rpc('session')).role,'owner');
+ let data=await rpc('data');check(data.workshops,undefined);check(data.users,undefined);
+ await denied(()=>db.query('select * from enjoy.records'));await denied(()=>db.query("update enjoy.profiles set role='admin'"));
+ await denied(()=>db.query('select public.enjoy_claim_reminders(false)'));
+ await denied(()=>rpc('decision',{id:w2,status:'approved'}));await denied(()=>rpc('permission',{id:w1,catalog:true}));
+ await rpc('save',{collection:'clients',record:{id:'client1',name:'Cliente prueba',phone:'593990000001',whatsappOptIn:true}});
+ await user(two);check((await rpc('data')).clients.length,0);
+ await denied(()=>rpc('save',{collection:'vehicles',record:{id:'bad',plate:'TEST-1',brand:'Marca',model:'Modelo',clientId:'client1'}}));
+ await user(one);await rpc('save',{collection:'vehicles',record:{id:'vehicle1',plate:'TEST-1',brand:'Marca',model:'Modelo',clientId:'client1',km:100}});
+ await denied(()=>rpc('save',{collection:'vehicles',record:{id:'vehicle2',plate:'TEST-1',brand:'Marca',model:'Modelo',clientId:'client1',km:100}}));
+ await denied(()=>rpc('save',{collection:'services',record:{id:'service1',name:'Servicio',category:'Revisión',labor:10,supplies:10,discount:0}}));
+ await user(admin);await rpc('permission',{id:w1,catalog:true});await user(one);
+ await rpc('save',{collection:'services',record:{id:'service1',name:'Servicio',category:'Revisión',labor:10,supplies:10,discount:0}});
+ await denied(()=>rpc('save',{collection:'services',record:{id:'badservice',name:'Servicio',category:'Revisión',discount:101}}));
+ const time=new Date(Date.now()+30*60000-5*3600000).toISOString(),a={id:'appointment1',clientId:'client1',vehicleId:'vehicle1',date:time.slice(0,10),time:time.slice(11,16),reason:'Revisión',duration:60,status:'scheduled'};
+ await rpc('save',{collection:'appointments',record:a});data=await rpc('data');check(data.reminders.length,2);
+ check(data.reminders[0].due,Date.parse(a.date+'T'+a.time+':00-05:00')/1000-3600);
+ await rpc('save',{collection:'appointments',record:a});check((await rpc('data')).reminders.length,2);
+ await denied(()=>rpc('save',{collection:'appointments',record:{...a,id:'overlap'}}));
+ await denied(()=>rpc('save',{collection:'appointments',record:{...a,id:'badtime',time:'24:00'}}));
+ await user('', 'service_role');check((await db.query('select public.enjoy_claim_reminders(false) result')).rows[0].result.length,0);
+ await user(one);check((await rpc('data')).reminders.filter(x=>x.status==='blocked').length,2);
+ await user('', 'service_role');let jobs=(await db.query('select public.enjoy_claim_reminders(true) result')).rows[0].result;check(jobs.length,2);check(jobs[0].parameters.length,6);
+ await db.query('select public.enjoy_finish_reminder($1,$2,$3,$4)',[jobs[0].id,'accepted','mock-message','']);await db.query('select public.enjoy_finish_reminder($1,$2,$3,$4)',[jobs[1].id,'uncertain',null,'Mock']);
+ check((await db.query('select public.enjoy_claim_reminders(true) result')).rows[0].result.length,0);
+ await user(one);await rpc('save',{collection:'appointments',record:{...a,status:'cancelled'}});
+ const later=new Date(Date.parse(a.date+'T'+a.time+':00-05:00')+5*60000-5*3600000).toISOString(),b={...a,id:'appointment2'};
+ await rpc('save',{collection:'appointments',record:b});await rpc('save',{collection:'appointments',record:{...b,date:later.slice(0,10),time:later.slice(11,16)}});
+ let pending=(await rpc('data')).reminders.filter(x=>x.appointment===b.id);check(pending.filter(x=>x.status==='cancelled').length,2);check(pending.filter(x=>x.status==='queued').length,2);
+ await rpc('save',{collection:'appointments',record:{...b,date:later.slice(0,10),time:later.slice(11,16),status:'cancelled'}});check((await rpc('data')).reminders.filter(x=>x.appointment===b.id&&x.status==='queued').length,0);
+ await rpc('save',{collection:'clients',record:{id:'client1',name:'Cliente prueba',phone:'593990000001',whatsappOptIn:false}});await rpc('save',{collection:'appointments',record:{...a,id:'appointment3'}});
+ await user('', 'service_role');check((await db.query('select public.enjoy_claim_reminders(true) result')).rows[0].result.length,1);
+ await user(one);check((await rpc('data')).reminders.find(x=>x.appointment==='appointment3'&&x.role==='client').status,'blocked');
+ await rpc('save',{collection:'clients',record:{id:'',name:'Cliente creado desde formulario'}});
+ const created=(await rpc('data')).clients.find(x=>x.name==='Cliente creado desde formulario');check(!!created.id,true);
+ await rpc('save',{collection:'vehicles',record:{clientId:created.id,plate:'TEST-NEW',brand:'Marca',model:'Modelo',km:0}});check((await rpc('data')).vehicles.some(x=>x.plate==='TEST-NEW'&&!!x.id),true);
+ await rpc('save',{collection:'plans',record:{id:'plan1',vehicleId:'vehicle1',service:'Revisión',km:200,status:'scheduled'}});check((await rpc('data')).plans.length,1);
+ await rpc('save',{collection:'requests',record:{id:'request1',clientId:'client1',vehicleId:'vehicle1',services:['service1'],status:'confirmed'}});
+ await denied(()=>rpc('save',{collection:'requests',record:{id:'request1',clientId:'client1',vehicleId:'vehicle1',services:[],status:'draft'}}));
+ await user(admin);data=await rpc('data');check(data.clients.length,0);check(data.users.length,3);check(data.workshops.find(x=>x.id===w1).counts.clients,2);
+ await rpc('decision',{id:w1,status:'rejected'});await user(one);await denied(()=>rpc('data'));
+ await user('', 'anon');await denied(()=>rpc('data'));
+ console.log(`${count} comprobaciones PostgreSQL superadas, sin envíos externos.`);
+}catch(e){console.error('Fallo SQL:',e.message,e.where||'');process.exitCode=1}finally{await db.close()}

@@ -28,3 +28,5 @@ Registre los dos números reales con código de país y sus autorizaciones. Solo
 Un identificador de la API significa aceptación, no entrega o lectura. No hay webhook de entrega. Una respuesta incierta no se reenvía automáticamente; requiere revisión manual. Las ejecuciones interrumpidas pasan a revisión después de cinco minutos. Los avisos aceptados no se repiten automáticamente. Los costos del proveedor no están incluidos.
 
 Documentación: https://supabase.com/docs/guides/functions/schedule-functions y https://developers.facebook.com/docs/whatsapp/cloud-api/ .
+
+El despliegue configurado consulta el secreto del programador desde Vault mediante una función exclusiva del servidor. REMINDER_JOB_SECRET puede utilizarse como alternativa en el entorno. El modo predeterminado es test; el programador está configurado y no requiere credenciales de Meta para comprobar horarios y destinatarios.

@@ -19,3 +19,9 @@ npm test
 ```
 
 Complete las pruebas de integración y de restauración en su cuenta antes de usar datos reales.
+
+## Verificación del proyecto configurado — 15 de octubre de 2026
+
+Se verificaron en el proyecto enjoy los ingresos reales de administrador y taller, el rechazo de operaciones administrativas desde el propietario, la persistencia de un cliente, un vehículo y una cita ficticios, y la generación de dos recordatorios. El programador está activo cada minuto y la función devolvió HTTP 200 en modo test. Los dos destinatarios quedaron en modo de prueba y no se enviaron mensajes reales.
+
+Las cuentas de prueba y sus contraseñas se entregan por separado; no están en este repositorio. La clave publicable de config.js está conectada al proyecto. Las contraseñas y los secretos del programador no se incluyen en el código público.

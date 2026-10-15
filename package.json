@@ -1,0 +1,12 @@
+{
+  "name": "enjoy-gestion-automotriz",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Gestión de talleres enjoy",
+  "scripts": {
+    "test": "node tests/database.mjs && node tests/connection.mjs && node tests/reminders.mjs",
+    "check": "node --check connection.js && node --check crm.js"
+  },
+  "devDependencies": {"@electric-sql/pglite": "^0.3.14"}
+}
+

@@ -1,0 +1,182 @@
+[
+  {
+    "path": ".gitignore",
+    "size": 179,
+    "sha256": "cf89de5d95e2cdd5a3ce59846bdd2767016cb3befbce7df59276b54482e83262"
+  },
+  {
+    "path": "CONFIGURAR.ps1",
+    "size": 1449,
+    "sha256": "7bf5652bf1f21f6c1347e04f3acb9febe11c5eaa860a0dec808aa30bdd25646e"
+  },
+  {
+    "path": "LEAME-PRIMERO.md",
+    "size": 4890,
+    "sha256": "9770aa6012e258b50c30ae40286dd03ed8a0255248351acfee8b1542a45d1141"
+  },
+  {
+    "path": "README.md",
+    "size": 1473,
+    "sha256": "515cfc708803e3956d9916924d427919ccb7d0439370ed5d8b9652456d48d951"
+  },
+  {
+    "path": "VERIFICAR.ps1",
+    "size": 1007,
+    "sha256": "ecab639d47acc4cdeee54eb49e7db9deb3c78ab0063fb9e52f21b17ae510d4f7"
+  },
+  {
+    "path": "config.js",
+    "size": 75,
+    "sha256": "4aaec4422675ea17202394c566a7c230958c8db66036d103e685650ed0c7c00d"
+  },
+  {
+    "path": "connection.js",
+    "size": 3944,
+    "sha256": "92b2dc1a59f5d0fc56aeb5ebeb94a4efbfa556d880c8562c042885623f43328b"
+  },
+  {
+    "path": "crm.css",
+    "size": 54350,
+    "sha256": "bd6738555bcc59f2d60792bcef08af983add426f13e3c5b2a5f49b5eaf5847e9"
+  },
+  {
+    "path": "crm.js",
+    "size": 47209,
+    "sha256": "faa1f433d6d0947de0af6de72e22f3276f1d81d268ac5fd940628a585c9097e3"
+  },
+  {
+    "path": "favicon.svg",
+    "size": 267,
+    "sha256": "80c715d5fa60797de7be7ba1f1225b0ecd06555c8387a31a430bb24c3de40a07"
+  },
+  {
+    "path": "index.html",
+    "size": 1313,
+    "sha256": "ad10374cf742f9bd53fefdd5f64dbce96823d5839a271878858acceb8e657f92"
+  },
+  {
+    "path": "package-lock.json",
+    "size": 622,
+    "sha256": "c07d1a2b3237c3d05642ff78adb85cb7730bed88cf173580ada73faf031592eb"
+  },
+  {
+    "path": "package.json",
+    "size": 369,
+    "sha256": "84936e0b46a68e624ca01f86b60b25aecbc1f5aa620442a3646edc89e3272bf8"
+  },
+  {
+    "path": "assets/Barlow-Regular.ttf",
+    "size": 104068,
+    "sha256": "95aa02c7c43096e0dd44d787ba6216864a67157e402adab59b35572e0c1577ea"
+  },
+  {
+    "path": "assets/Barlow-SemiBold.ttf",
+    "size": 108348,
+    "sha256": "86577cb32f8abe3673db53ca0f4221e6856751a4f6730c867e00f720f8bb1fc5"
+  },
+  {
+    "path": "assets/BarlowCondensed-SemiBold.ttf",
+    "size": 109428,
+    "sha256": "7b619d14bc2327509a9ef32b0890f709626f7ecc9ff61191c2a4314c5499d2d9"
+  },
+  {
+    "path": "assets/LICENSE-Lucide.txt",
+    "size": 3208,
+    "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57"
+  },
+  {
+    "path": "assets/Manrope-OFL.txt",
+    "size": 4387,
+    "sha256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b"
+  },
+  {
+    "path": "assets/Manrope.ttf",
+    "size": 164700,
+    "sha256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6"
+  },
+  {
+    "path": "assets/OFL-Barlow.txt",
+    "size": 4377,
+    "sha256": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f"
+  },
+  {
+    "path": "assets/OFL-BarlowCondensed.txt",
+    "size": 4377,
+    "sha256": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f"
+  },
+  {
+    "path": "assets/VIDEO-SOURCE.md",
+    "size": 237,
+    "sha256": "17422dc3536561e78a338eefa47d04e68ba79145b91205ef0a100bddb9ee1c68"
+  },
+  {
+    "path": "assets/driving-poster.jpg",
+    "size": 50036,
+    "sha256": "8eaf0e9a156c2b0fbd15057494d19d712cd800c67e7033a85a318629ad2c0ef3"
+  },
+  {
+    "path": "assets/enjoy-driving-28.mp4",
+    "size": 7849456,
+    "sha256": "8ff838df15d209bb210baa439f20bb529ddf835febd84a86bbc8e322e047056b"
+  },
+  {
+    "path": "assets/fonts.css",
+    "size": 477,
+    "sha256": "5fb616f14109f4902bc8c752263479eac7b4a47af6650f77a5248e966c8c5914"
+  },
+  {
+    "path": "docs/IMPLEMENTACION.md",
+    "size": 2930,
+    "sha256": "9fee777a1f6575c9a3a485b20e42ff05145c71eb1defad0131d97c5d21a7ec09"
+  },
+  {
+    "path": "docs/VALIDACION.md",
+    "size": 1596,
+    "sha256": "60634f2b3494f32927004c6ee528837fbe64d2a74f2b2a60197ab4a1493781ed"
+  },
+  {
+    "path": "docs/WHATSAPP.md",
+    "size": 3107,
+    "sha256": "13e90706cc8ff5554267aa29361fdfa8b42f0fdc7f36c6b5cf7dca8b5d13655b"
+  },
+  {
+    "path": "supabase/ADMINISTRADOR.sql",
+    "size": 1082,
+    "sha256": "815d9684d5db9666a19eb1edc5067105f68246d52e3fd7fc58ed1b28bebe86ce"
+  },
+  {
+    "path": "supabase/INSTALAR.sql",
+    "size": 18797,
+    "sha256": "848099cb57f693be023dd037af45c8ef940eaf5ea0b55f08c37dce44e01a63a0"
+  },
+  {
+    "path": "supabase/PROGRAMAR.sql",
+    "size": 1073,
+    "sha256": "c38de0487a83a4e67b0d97f4040f767d0e5a9c1d6f4d2cc903398df0d87d7063"
+  },
+  {
+    "path": "supabase/config.toml",
+    "size": 74,
+    "sha256": "6d73cf5e9ee4583d37494c5f8c5df1c1915c49bde3032efcf4ac07898532c6b7"
+  },
+  {
+    "path": "supabase/functions/appointment-reminders/index.ts",
+    "size": 2984,
+    "sha256": "6e2527e16cc2743ce8c46b82690a1089c788b76b570dea6a556f4a16ffca59e2"
+  },
+  {
+    "path": "tests/connection.mjs",
+    "size": 1827,
+    "sha256": "773836baab1d7f1054c9be899e60794f62b8f80a2f0a81e2249ec5ca03022803"
+  },
+  {
+    "path": "tests/database.mjs",
+    "size": 8160,
+    "sha256": "3a38aa1e2ef32c600963210d93c17f4c2bc13b5b62b41043eed9549017f1da9e"
+  },
+  {
+    "path": "tests/reminders.mjs",
+    "size": 2492,
+    "sha256": "69637a57dd8f5e88a8cc0ea590d3fe7cdbfcf49d90526daa8645fc25df2b8ec0"
+  }
+]

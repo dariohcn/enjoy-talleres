@@ -41,8 +41,8 @@
   },
   {
     "path": "crm.js",
-    "size": 49337,
-    "sha256": "c287b7a54de7281593424338760599d546a73928839b66e12095bc59e83e8c81"
+    "size": 50439,
+    "sha256": "a8c27d7083c9621be8ec61f9ebac44c1e5bca675b6ab4bf05ef6c4a8a87dc843"
   },
   {
     "path": "favicon.svg",
@@ -51,8 +51,8 @@
   },
   {
     "path": "index.html",
-    "size": 1726,
-    "sha256": "571215a93dfa1465084b2a13cc2ba0f1c6fe0acaacfff4d47ee0aae53e6fe735"
+    "size": 1778,
+    "sha256": "a087fe81f7fedf2947d656dac9ebd67688c7c1d64d7f042bf7f94ce942cb6301"
   },
   {
     "path": "package-lock.json",
@@ -66,8 +66,8 @@
   },
   {
     "path": "responsive.css",
-    "size": 17286,
-    "sha256": "c6692da5e67cfd29f8163f6efc5626d5afc7a3eae25da92a1cc2e63feb239ce2"
+    "size": 39430,
+    "sha256": "d5bf27e685df3f02ece3ffa9840dda20fa004876835eb2fbe90c34876ab3876f"
   },
   {
     "path": "assets/Barlow-Regular.ttf",
@@ -110,6 +110,11 @@
     "sha256": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f"
   },
   {
+    "path": "assets/TABLER-LICENSE.txt",
+    "size": 1090,
+    "sha256": "4f88a82d13be3c5c63a12c5631eae914aa4381b6dc17641bf1ab85f3f8f6c8a5"
+  },
+  {
     "path": "assets/VIDEO-SOURCE.md",
     "size": 237,
     "sha256": "17422dc3536561e78a338eefa47d04e68ba79145b91205ef0a100bddb9ee1c68"
@@ -128,6 +133,11 @@
     "path": "assets/fonts.css",
     "size": 477,
     "sha256": "5fb616f14109f4902bc8c752263479eac7b4a47af6650f77a5248e966c8c5914"
+  },
+  {
+    "path": "assets/tabler.min.css",
+    "size": 635394,
+    "sha256": "370a2d4e608ae518351d10528fc7dbe19b354ae5062c51b2a9cb294850d65403"
   },
   {
     "path": "docs/IMPLEMENTACION.md",

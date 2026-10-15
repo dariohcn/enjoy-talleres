@@ -36,13 +36,13 @@
   },
   {
     "path": "crm.css",
-    "size": 54350,
-    "sha256": "bd6738555bcc59f2d60792bcef08af983add426f13e3c5b2a5f49b5eaf5847e9"
+    "size": 42898,
+    "sha256": "a36ee2c1edf1af297f30d7884ae036e21e09401a17ad162bfee4cb6f9f17abc2"
   },
   {
     "path": "crm.js",
     "size": 50439,
-    "sha256": "a8c27d7083c9621be8ec61f9ebac44c1e5bca675b6ab4bf05ef6c4a8a87dc843"
+    "sha256": "d3ed6c37fcd2642d384a3b141eae1f12068d1608c2737a4c83c6744bffa3659e"
   },
   {
     "path": "favicon.svg",
@@ -51,8 +51,8 @@
   },
   {
     "path": "index.html",
-    "size": 1778,
-    "sha256": "a087fe81f7fedf2947d656dac9ebd67688c7c1d64d7f042bf7f94ce942cb6301"
+    "size": 1768,
+    "sha256": "9c052a7d7a5328b3359d126d1f2ecf37bdc1ee44ab80ce2a8b3421b6ef3e4a79"
   },
   {
     "path": "package-lock.json",
@@ -66,8 +66,8 @@
   },
   {
     "path": "responsive.css",
-    "size": 39430,
-    "sha256": "d5bf27e685df3f02ece3ffa9840dda20fa004876835eb2fbe90c34876ab3876f"
+    "size": 40825,
+    "sha256": "c258fa6abcbf0b0ed04f7354998f43e818c9d3ffeb3488001055fc0045b0356b"
   },
   {
     "path": "assets/Barlow-Regular.ttf",

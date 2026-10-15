@@ -52,7 +52,7 @@
   {
     "path": "index.html",
     "size": 1715,
-    "sha256": "09585300c2a523fa896a3ad43d4f1a9658cac3670aca3ca12b93c89f31e99300"
+    "sha256": "93ad5e6079a6bc09ca02b4092916bca7d5dbb1bc4d51a574aea51fcc684c9737"
   },
   {
     "path": "package-lock.json",
@@ -66,8 +66,8 @@
   },
   {
     "path": "responsive.css",
-    "size": 15552,
-    "sha256": "3034a27e11e97591cd4d5c507b188a43e09053f06488b37554dbb4d65d914ed1"
+    "size": 15941,
+    "sha256": "d7b665b25e0527fb9acc0c7c33ac86a9955dadc8bd1bcc0d75a276cac06941fb"
   },
   {
     "path": "assets/Barlow-Regular.ttf",

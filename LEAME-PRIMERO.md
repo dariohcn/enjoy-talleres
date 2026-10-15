@@ -1,3 +1,7 @@
+# Estado de esta entrega
+
+El archivo config.js ya apunta al proyecto enjoy configurado. La base de datos, el administrador de prueba, el taller aprobado y el programador están instalados. No vuelva a ejecutar INSTALAR.sql ni ADMINISTRADOR.sql sobre este proyecto; esos archivos permiten preparar otro proyecto vacío. Las credenciales se entregan por separado. Los avisos están en modo de prueba.
+
 # enjoy · Proyecto completo
 
 Esta carpeta contiene la interfaz, fuentes, video real de 28 segundos, licencias, base de datos, control de acceso y procesador de recordatorios. No necesita el servidor Python de las entregas anteriores. La interfaz conserva el diseño azul y plomo y el crédito a Neodat Consultores; no muestra nombres de proveedores técnicos.

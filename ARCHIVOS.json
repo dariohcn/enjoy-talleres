@@ -11,8 +11,8 @@
   },
   {
     "path": "LEAME-PRIMERO.md",
-    "size": 4890,
-    "sha256": "9770aa6012e258b50c30ae40286dd03ed8a0255248351acfee8b1542a45d1141"
+    "size": 5367,
+    "sha256": "ef11799f4c4669a51380fb40889dbf8f0f171ea346c21c8e840558c125bd4221"
   },
   {
     "path": "README.md",
@@ -26,8 +26,8 @@
   },
   {
     "path": "config.js",
-    "size": 75,
-    "sha256": "4aaec4422675ea17202394c566a7c230958c8db66036d103e685650ed0c7c00d"
+    "size": 161,
+    "sha256": "f140f8bc0e2b9525eb161119a01de1facb5c4aa07da59d20b433cb67b05a1a2b"
   },
   {
     "path": "connection.js",
@@ -131,13 +131,13 @@
   },
   {
     "path": "docs/VALIDACION.md",
-    "size": 1596,
-    "sha256": "60634f2b3494f32927004c6ee528837fbe64d2a74f2b2a60197ab4a1493781ed"
+    "size": 2363,
+    "sha256": "42dbb2f488f5c3500fa426ed4977a45336791969bcc6364db797bcdf6d24ffab"
   },
   {
     "path": "docs/WHATSAPP.md",
-    "size": 3107,
-    "sha256": "13e90706cc8ff5554267aa29361fdfa8b42f0fdc7f36c6b5cf7dca8b5d13655b"
+    "size": 3470,
+    "sha256": "9ad603aaa881b4903720d961ff2947702bf334d7dd4198735c6e4507261aba43"
   },
   {
     "path": "supabase/ADMINISTRADOR.sql",
@@ -146,13 +146,13 @@
   },
   {
     "path": "supabase/INSTALAR.sql",
-    "size": 18797,
-    "sha256": "848099cb57f693be023dd037af45c8ef940eaf5ea0b55f08c37dce44e01a63a0"
+    "size": 18987,
+    "sha256": "5e014bcac0398a470dac3f3912a6f3305e4e1bee0305bfb1073786caae7510b9"
   },
   {
     "path": "supabase/PROGRAMAR.sql",
-    "size": 1073,
-    "sha256": "c38de0487a83a4e67b0d97f4040f767d0e5a9c1d6f4d2cc903398df0d87d7063"
+    "size": 1536,
+    "sha256": "295f35112f5608c369534276998bc7075df41eaff369c2af3f5b0472b833b85b"
   },
   {
     "path": "supabase/config.toml",
@@ -161,8 +161,8 @@
   },
   {
     "path": "supabase/functions/appointment-reminders/index.ts",
-    "size": 2984,
-    "sha256": "6e2527e16cc2743ce8c46b82690a1089c788b76b570dea6a556f4a16ffca59e2"
+    "size": 3133,
+    "sha256": "eff390063acdf570730c513a0ff5c26ce9d68190755426279dfb07af1614e561"
   },
   {
     "path": "tests/connection.mjs",

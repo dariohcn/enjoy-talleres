@@ -64,6 +64,14 @@ td,th{line-height:1.6}
 .strip-day{min-width:0;min-height:92px}
 .strip-navigation button{min-width:32px;min-height:40px}
 .unit-inspector{position:sticky;top:98px}
+.unit-inspector-top>span{color:#d3e3ef;font-size:10px}
+.unit-inspector-top .text-button{color:#fff;font-size:12px}
+.unit-title p{color:#c7d9e8;font-size:12px}
+.unit-details dt{font-size:11px}
+.reception-labels{font-size:10px}
+.reception-list-head>span,.arrival-client>span{font-size:12px}
+.reception-foot,.arrival-status,.arrival-time small{font-size:11px}
+.strip-day>span{font-size:10px}
 .agenda-layout{grid-template-columns:minmax(0,1fr) 290px}
 .calendar-title{flex-wrap:wrap;gap:10px}
 .calendar-title h2{font-size:18px}

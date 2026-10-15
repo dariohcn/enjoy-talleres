@@ -63,9 +63,9 @@ function isFutureAppointment(a){return new Date(a.date+"T"+a.time+":00-05:00").g
 
 
 // Keep the same navigation usable by touch, keyboard and wide-screen workstations.
-const navigationMedia=matchMedia('(max-width:1100px)');
+const navigationMedia=matchMedia('(max-width:1199px)');
 function setNavigation(open,returnFocus=true){
- const mobile=matchMedia('(max-width:1100px)').matches;
+ const mobile=matchMedia('(max-width:1199px)').matches;
  const expanded=!!open&&mobile;
  const wasOpen=document.body.classList.contains('menu-open');
  document.body.classList.toggle('menu-open',expanded);

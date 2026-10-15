@@ -1,5 +1,10 @@
 -- ENJOY: ejecutar una vez en un proyecto nuevo, desde SQL Editor.
 begin;
+do $$ begin
+ if to_regprocedure('public.rls_auto_enable()') is not null then
+  execute 'revoke execute on function public.rls_auto_enable() from public,anon,authenticated';
+ end if;
+end $$;
 create schema enjoy;
 revoke all on schema enjoy from public,anon,authenticated;
 create table enjoy.workshops(id uuid primary key default gen_random_uuid(),name text not null,owner text not null,email text not null,location text not null,status text not null default 'pending' check(status in ('pending','approved','rejected')),catalog boolean not null default false,phone text not null default '',whatsapp_optin boolean not null default false,created timestamptz not null default now(),check(not whatsapp_optin or phone ~ '^[1-9][0-9]{7,14}$'));

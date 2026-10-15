@@ -1,0 +1,11 @@
+import {readFile} from 'node:fs/promises';import {runInNewContext} from 'node:vm';import assert from 'node:assert/strict';
+let calls=[],stored=new Map(),approved=true;
+const context={window:{ENJOY_CONFIG:{endpoint:'https://example.supabase.co',publicKey:'sb_publishable_test'}},sessionStorage:{getItem:k=>stored.get(k)||null,setItem:(k,v)=>stored.set(k,v),removeItem:k=>stored.delete(k)},atob:s=>Buffer.from(s,'base64').toString(),Date,fetch:async(url,options)=>{calls.push({url,options});if(url.includes('/token?'))return{ok:true,json:async()=>({access_token:'mock-access',refresh_token:'mock-refresh',expires_in:3600})};if(url.endsWith('/logout')||url.endsWith('/signup'))return{ok:true,json:async()=>({})};return{ok:approved,status:approved?200:403,json:async()=>approved?{role:'owner'}:{message:'Su solicitud está pendiente de aprobación.'}}}};
+runInNewContext(await readFile(new URL('../connection.js',import.meta.url),'utf8')+'\nthis.api=EnjoyConnection.api',context);
+assert.equal(await context.api('session'),null);
+await context.api('login',{email:'test@example.test',password:'mock-password'});assert.equal(calls.at(-1).options.headers.Authorization,'Bearer mock-access');
+await context.api('save',{collection:'clients',record:{id:'1',name:'Prueba'}});assert.equal(JSON.parse(calls.at(-1).options.body).action,'save');
+await context.api('logout');assert.equal(stored.size,0);
+approved=false;await assert.rejects(()=>context.api('login',{email:'test@example.test',password:'mock-password'}));assert.equal(stored.size,0);
+context.window.ENJOY_CONFIG.publicKey='sb_secret_mock';const before=calls.length;await assert.rejects(()=>context.api('login',{email:'test@example.test',password:'mock-password'}));assert.equal(calls.length,before);
+console.log('6 comprobaciones del adaptador superadas. Transporte simulado.');

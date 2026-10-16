@@ -201,64 +201,48 @@ html[data-enjoy-phone] .auth-credit{margin-top:auto;font-size:11px}
 html[data-enjoy-phone][data-phone-orientation=landscape] body:not(.logged-out) #mobile-nav{display:none}
 html[data-enjoy-phone][data-phone-orientation=landscape] .shell{padding-bottom:0}
 
-/* Keep the complete film frame visible on handheld access screens. */
+/* Mobile access uses Tabler form proportions and a complete, edge-to-edge film frame. */
 @media(max-width:900px),(orientation:portrait) and (max-width:1199px){
- body.logged-out .auth-intro{height:auto;min-height:0;padding:0;justify-content:flex-start;overflow:visible}
- body.logged-out .auth-brand{order:0;width:100%;padding:16px 24px;font-size:36px;background:#103451}
- body.logged-out .auth-brand span{font-size:8px;margin-top:6px}
- body.logged-out .auth-video{position:relative;inset:auto;order:1;z-index:0;aspect-ratio:16/9;width:100%;height:auto;flex:none;background:#103451}
- body.logged-out .auth-video video{position:static;width:100%;height:100%;object-fit:contain;object-position:center;filter:none}
- body.logged-out .auth-intro:after{display:none}
- body.logged-out .login-card.card{min-height:0}
- body.logged-out .auth-credit{margin-top:24px}
+body.logged-out .auth-layout{grid-template-rows:auto 1fr;min-height:100svh;background:#f1f4f7;align-content:start}
+body.logged-out .auth-intro{height:auto;min-height:0;padding:0;justify-content:flex-start;overflow:visible;background:#103451}
+body.logged-out .auth-brand{order:0;width:100%;padding:12px 22px;font-size:32px;line-height:1;color:#fff;background:#103451;display:flex;align-items:center;justify-content:space-between;letter-spacing:-1px}
+body.logged-out .auth-brand span{font-size:7px;letter-spacing:1.5px;margin:0;line-height:1.6;max-width:110px;text-align:right}
+body.logged-out .auth-video{position:relative;inset:auto;order:1;z-index:0;aspect-ratio:16/9;width:100%;height:auto;flex:none;margin:0;background:#103451}
+body.logged-out .auth-video video{position:static;width:100%;height:100%;object-fit:contain;object-position:center;filter:none}
+body.logged-out .auth-intro:after,body.logged-out .auth-message,body.logged-out .auth-form-heading{display:none}
+body.logged-out .login-card.card{width:100%;grid-row:2;min-height:0;padding:24px 22px 18px;gap:22px;justify-content:flex-start;background:#f1f4f7}
+body.logged-out .login-content{width:100%;max-width:480px;margin:0 auto}
+body.logged-out .login-card h2{font-size:25px;letter-spacing:-.7px;line-height:1.25;margin:0 0 8px;color:#173750}
+body.logged-out .login-content>p{font-size:13px;line-height:1.65;color:#607387;max-width:none}
+body.logged-out .login-card form{margin-top:22px}
+body.logged-out .login-card label{font-size:13px;font-weight:600;margin:0 0 16px;color:#344d62}
+body.logged-out .login-card input.form-control{width:100%;height:48px;min-height:48px;font-size:16px;padding:11px 13px;margin-top:7px;background:#fff;border:1px solid #c5d1db;border-radius:7px}
+body.logged-out .login-card form .btn{min-height:48px;padding:12px 15px;margin-top:2px;border-radius:7px;background:#1264ac;border-color:#1264ac;font-size:14px}
+body.logged-out .register-link{margin-top:20px;padding-top:17px;border-top:1px solid #d5dfe7}
+body.logged-out .register-link p{font-size:12px;margin-bottom:10px;color:#607387}
+body.logged-out .register-link .btn{min-height:44px;font-size:13px;background:#fff;border:1px solid #b8cad8;border-radius:7px;color:#165f96}
+body.logged-out .register-link small{font-size:11px;line-height:1.6;margin-top:10px;color:#607387}
+body.logged-out .auth-credit{max-width:480px;margin:0 auto;padding:0;font-size:10px;gap:4px;color:#607387}
 }
-html[data-enjoy-phone] body.logged-out .auth-intro{height:auto;min-height:0;padding:0;justify-content:flex-start;overflow:visible}
-html[data-enjoy-phone] body.logged-out .auth-brand{order:0;width:100%;padding:16px 24px;background:#103451}
-html[data-enjoy-phone] body.logged-out .auth-video{position:relative;inset:auto;order:1;z-index:0;aspect-ratio:16/9;width:100%;height:auto;flex:none;background:#103451}
+html[data-enjoy-phone] body.logged-out .auth-layout{grid-template-rows:auto 1fr;min-height:100svh;background:#f1f4f7;align-content:start}
+html[data-enjoy-phone] body.logged-out .auth-intro{height:auto;min-height:0;padding:0;justify-content:flex-start;overflow:visible;background:#103451}
+html[data-enjoy-phone] body.logged-out .auth-brand{order:0;width:100%;padding:12px 22px;font-size:32px;line-height:1;color:#fff;background:#103451;display:flex;align-items:center;justify-content:space-between;letter-spacing:-1px}
+html[data-enjoy-phone] body.logged-out .auth-brand span{font-size:7px;letter-spacing:1.5px;margin:0;line-height:1.6;max-width:110px;text-align:right}
+html[data-enjoy-phone] body.logged-out .auth-video{position:relative;inset:auto;order:1;z-index:0;aspect-ratio:16/9;width:100%;height:auto;flex:none;margin:0;background:#103451}
 html[data-enjoy-phone] body.logged-out .auth-video video{position:static;width:100%;height:100%;object-fit:contain;object-position:center;filter:none}
-html[data-enjoy-phone] body.logged-out .auth-intro:after{display:none}
-html[data-enjoy-phone] body.logged-out .login-card.card{min-height:0}
-html[data-enjoy-phone] body.logged-out .auth-credit{margin-top:24px}
-
-/* Compact phone entry: full-width controls and viewport-sized composition. */
-@media(max-width:600px){
-body.logged-out .auth-layout{grid-template-rows:auto 1fr;min-height:100svh}
-body.logged-out .auth-brand{padding:10px 20px;font-size:28px}
-body.logged-out .auth-brand span{font-size:7px;margin-top:3px}
-body.logged-out .auth-video{height:clamp(110px,19svh,165px);aspect-ratio:auto}
-body.logged-out .login-card.card{padding:20px 20px 14px;gap:14px;justify-content:space-between;min-height:0}
-body.logged-out .login-content{max-width:none;width:100%;margin:0}
-body.logged-out .auth-form-heading{display:none}
-body.logged-out .login-card h2{font-size:24px;margin-bottom:7px}
-body.logged-out .login-content>p{font-size:13px;line-height:1.5}
-body.logged-out .login-card form{margin-top:18px}
-body.logged-out .login-card label{font-size:13px;margin-bottom:14px}
-body.logged-out .login-card input.form-control{height:46px;min-height:46px;margin-top:6px;font-size:16px;padding:10px 12px}
-body.logged-out .login-card form .btn{min-height:46px;margin-top:2px;padding:10px 14px}
-body.logged-out .register-link{margin-top:17px;padding-top:15px}
-body.logged-out .register-link p{font-size:12px;margin-bottom:9px}
-body.logged-out .register-link .btn{min-height:44px;font-size:13px}
-body.logged-out .register-link small{font-size:11px;line-height:1.5;margin-top:9px}
-body.logged-out .auth-credit{margin-top:4px;padding-top:0;font-size:10px;gap:3px}
-}
-html[data-enjoy-phone] body.logged-out .auth-layout{grid-template-rows:auto 1fr;min-height:100svh}
-html[data-enjoy-phone] body.logged-out .auth-brand{padding:10px 20px;font-size:28px}
-html[data-enjoy-phone] body.logged-out .auth-brand span{font-size:7px;margin-top:3px}
-html[data-enjoy-phone] body.logged-out .auth-video{height:clamp(110px,19svh,165px);aspect-ratio:auto}
-html[data-enjoy-phone] body.logged-out .login-card.card{padding:20px 20px 14px;gap:14px;justify-content:space-between;min-height:0}
-html[data-enjoy-phone] body.logged-out .login-content{max-width:none;width:100%;margin:0}
-html[data-enjoy-phone] body.logged-out .auth-form-heading{display:none}
-html[data-enjoy-phone] body.logged-out .login-card h2{font-size:24px;margin-bottom:7px}
-html[data-enjoy-phone] body.logged-out .login-content>p{font-size:13px;line-height:1.5}
-html[data-enjoy-phone] body.logged-out .login-card form{margin-top:18px}
-html[data-enjoy-phone] body.logged-out .login-card label{font-size:13px;margin-bottom:14px}
-html[data-enjoy-phone] body.logged-out .login-card input.form-control{height:46px;min-height:46px;margin-top:6px;font-size:16px;padding:10px 12px}
-html[data-enjoy-phone] body.logged-out .login-card form .btn{min-height:46px;margin-top:2px;padding:10px 14px}
-html[data-enjoy-phone] body.logged-out .register-link{margin-top:17px;padding-top:15px}
-html[data-enjoy-phone] body.logged-out .register-link p{font-size:12px;margin-bottom:9px}
-html[data-enjoy-phone] body.logged-out .register-link .btn{min-height:44px;font-size:13px}
-html[data-enjoy-phone] body.logged-out .register-link small{font-size:11px;line-height:1.5;margin-top:9px}
-html[data-enjoy-phone] body.logged-out .auth-credit{margin-top:4px;padding-top:0;font-size:10px;gap:3px}
+html[data-enjoy-phone] body.logged-out .auth-intro:after,body.logged-out .auth-message,body.logged-out .auth-form-heading{display:none}
+html[data-enjoy-phone] body.logged-out .login-card.card{width:100%;grid-row:2;min-height:0;padding:24px 22px 18px;gap:22px;justify-content:flex-start;background:#f1f4f7}
+html[data-enjoy-phone] body.logged-out .login-content{width:100%;max-width:480px;margin:0 auto}
+html[data-enjoy-phone] body.logged-out .login-card h2{font-size:25px;letter-spacing:-.7px;line-height:1.25;margin:0 0 8px;color:#173750}
+html[data-enjoy-phone] body.logged-out .login-content>p{font-size:13px;line-height:1.65;color:#607387;max-width:none}
+html[data-enjoy-phone] body.logged-out .login-card form{margin-top:22px}
+html[data-enjoy-phone] body.logged-out .login-card label{font-size:13px;font-weight:600;margin:0 0 16px;color:#344d62}
+html[data-enjoy-phone] body.logged-out .login-card input.form-control{width:100%;height:48px;min-height:48px;font-size:16px;padding:11px 13px;margin-top:7px;background:#fff;border:1px solid #c5d1db;border-radius:7px}
+html[data-enjoy-phone] body.logged-out .login-card form .btn{min-height:48px;padding:12px 15px;margin-top:2px;border-radius:7px;background:#1264ac;border-color:#1264ac;font-size:14px}
+html[data-enjoy-phone] body.logged-out .register-link{margin-top:20px;padding-top:17px;border-top:1px solid #d5dfe7}
+html[data-enjoy-phone] body.logged-out .register-link p{font-size:12px;margin-bottom:10px;color:#607387}
+html[data-enjoy-phone] body.logged-out .register-link .btn{min-height:44px;font-size:13px;background:#fff;border:1px solid #b8cad8;border-radius:7px;color:#165f96}
+html[data-enjoy-phone] body.logged-out .register-link small{font-size:11px;line-height:1.6;margin-top:10px;color:#607387}
+html[data-enjoy-phone] body.logged-out .auth-credit{max-width:480px;margin:0 auto;padding:0;font-size:10px;gap:4px;color:#607387}
 
 html[data-enjoy-phone] body.logged-out .auth-layout{min-height:var(--phone-height,100svh)}
-html[data-enjoy-phone] body.logged-out .auth-video{height:clamp(110px,calc(var(--phone-height,100svh) * .19),165px)}

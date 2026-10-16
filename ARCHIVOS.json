@@ -36,8 +36,8 @@
   },
   {
     "path": "connection.js",
-    "size": 3944,
-    "sha256": "92b2dc1a59f5d0fc56aeb5ebeb94a4efbfa556d880c8562c042885623f43328b"
+    "size": 3962,
+    "sha256": "2b81efe4c99e5b84cb8c525a1e531959eaace1f78bb93ccd92db2ebfc71b5118"
   },
   {
     "path": "crm.css",
@@ -46,8 +46,8 @@
   },
   {
     "path": "crm.js",
-    "size": 67343,
-    "sha256": "29beb7ee95d5b81b851d672a13a349d9042af3399d5bfe4a6263db31bb12df74"
+    "size": 81581,
+    "sha256": "3fbc2ce8d6bdede4aa6f0c18ea0c73c09d5e4c84d3eda48b840a3a4e559b934a"
   },
   {
     "path": "favicon.svg",
@@ -56,8 +56,8 @@
   },
   {
     "path": "index.html",
-    "size": 2094,
-    "sha256": "f9707066b8b1510d8fd6ce470a5af209f87dbfe7c4977b78c4495ec68b8d3ad3"
+    "size": 2086,
+    "sha256": "4db2394f16aafa7e7c02884f04379850c46a6da71b8c136cc4d4097146a4ce6c"
   },
   {
     "path": "package-lock.json",
@@ -81,8 +81,8 @@
   },
   {
     "path": "workspace.css",
-    "size": 39846,
-    "sha256": "fb97f7c5f554c111bdc10b2c9be2f6599215c54381bb21c6cdd2b11ef757684c"
+    "size": 48295,
+    "sha256": "9bb5087a2c605740c948d871ec4a809aa4b21f12a5f7d34999bd114757a14dfa"
   },
   {
     "path": "assets/Barlow-Regular.ttf",
@@ -160,6 +160,11 @@
     "sha256": "9fee777a1f6575c9a3a485b20e42ff05145c71eb1defad0131d97c5d21a7ec09"
   },
   {
+    "path": "docs/PRODUCTOS.md",
+    "size": 1435,
+    "sha256": "4a908c9918f75389a99d33c96c46a0dd488487916f47d37ccbb7448a78455573"
+  },
+  {
     "path": "docs/VALIDACION.md",
     "size": 2363,
     "sha256": "42dbb2f488f5c3500fa426ed4977a45336791969bcc6364db797bcdf6d24ffab"
@@ -176,18 +181,23 @@
   },
   {
     "path": "supabase/EJEMPLOS.sql",
-    "size": 2938,
-    "sha256": "4289eb55d73e4544db2159f4095671fe51f5d6a2c5269a45bf8b3fb8caecac4e"
+    "size": 3320,
+    "sha256": "a77853576348103493da403f832cf9e2c56743d6bb00f76baf78576501ac802b"
   },
   {
     "path": "supabase/INSTALAR.sql",
-    "size": 24588,
-    "sha256": "ed69afa38f74725ebdff11c48ba01eb878eddc17131996c5a5d6fe78d02c923a"
+    "size": 32865,
+    "sha256": "07f94a173663585277bf09c127b0ee0c187b8b651f9b8e884d6bd6296c3f891d"
   },
   {
     "path": "supabase/PANEL-ADMIN.sql",
     "size": 3169,
     "sha256": "ea31cdc9001656a112090d1eac71298526c40e04a3d976affbae7e2d073c0885"
+  },
+  {
+    "path": "supabase/PRODUCTOS-IMAGENES.sql",
+    "size": 8276,
+    "sha256": "289ff8bd07ea2494be17c5dde63ff6db0d96d56c1902575b0a874500b4ed29e1"
   },
   {
     "path": "supabase/PROGRAMAR.sql",
@@ -216,8 +226,8 @@
   },
   {
     "path": "tests/database.mjs",
-    "size": 9966,
-    "sha256": "fba7c20fdce900a9d9300669aae889f2c54e96345c9ea37b75644976f643c522"
+    "size": 12437,
+    "sha256": "a838925a236ec9638040f8f590a225f89d4a9bc361d4537bb4b8b3cf6407c443"
   },
   {
     "path": "tests/reminders.mjs",

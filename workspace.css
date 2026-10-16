@@ -200,3 +200,22 @@ html[data-enjoy-phone] body.logged-out .register-link small{font-size:12px}
 html[data-enjoy-phone] .auth-credit{margin-top:auto;font-size:11px}
 html[data-enjoy-phone][data-phone-orientation=landscape] body:not(.logged-out) #mobile-nav{display:none}
 html[data-enjoy-phone][data-phone-orientation=landscape] .shell{padding-bottom:0}
+
+/* Keep the complete film frame visible on handheld access screens. */
+@media(max-width:900px),(orientation:portrait) and (max-width:1199px){
+ body.logged-out .auth-intro{height:auto;min-height:0;padding:0;justify-content:flex-start;overflow:visible}
+ body.logged-out .auth-brand{order:0;width:100%;padding:16px 24px;font-size:36px;background:#103451}
+ body.logged-out .auth-brand span{font-size:8px;margin-top:6px}
+ body.logged-out .auth-video{position:relative;inset:auto;order:1;z-index:0;aspect-ratio:16/9;width:100%;height:auto;flex:none;background:#103451}
+ body.logged-out .auth-video video{position:static;width:100%;height:100%;object-fit:contain;object-position:center;filter:none}
+ body.logged-out .auth-intro:after{display:none}
+ body.logged-out .login-card.card{min-height:0}
+ body.logged-out .auth-credit{margin-top:24px}
+}
+html[data-enjoy-phone] body.logged-out .auth-intro{height:auto;min-height:0;padding:0;justify-content:flex-start;overflow:visible}
+html[data-enjoy-phone] body.logged-out .auth-brand{order:0;width:100%;padding:16px 24px;background:#103451}
+html[data-enjoy-phone] body.logged-out .auth-video{position:relative;inset:auto;order:1;z-index:0;aspect-ratio:16/9;width:100%;height:auto;flex:none;background:#103451}
+html[data-enjoy-phone] body.logged-out .auth-video video{position:static;width:100%;height:100%;object-fit:contain;object-position:center;filter:none}
+html[data-enjoy-phone] body.logged-out .auth-intro:after{display:none}
+html[data-enjoy-phone] body.logged-out .login-card.card{min-height:0}
+html[data-enjoy-phone] body.logged-out .auth-credit{margin-top:24px}

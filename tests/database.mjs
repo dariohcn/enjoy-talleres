@@ -22,7 +22,7 @@ try{
  await user(one);await denied(()=>rpc('session'));
  await user(admin);await rpc('decision',{id:w1,status:'approved'});await rpc('decision',{id:w2,status:'approved'});
  await user(one);check((await rpc('session')).role,'owner');
- let data=await rpc('data');check(data.workshops,undefined);check(data.users,undefined);
+ let data=await rpc('data');check(data.workshops,undefined);check(data.users,undefined);check(data.monitor,undefined);await denied(()=>db.query('select enjoy.admin_monitor()'));
  await denied(()=>db.query('select * from enjoy.records'));await denied(()=>db.query("update enjoy.profiles set role='admin'"));
  await denied(()=>db.query('select public.enjoy_claim_reminders(false)'));
  await denied(()=>rpc('decision',{id:w2,status:'approved'}));await denied(()=>rpc('permission',{id:w1,catalog:true}));
@@ -61,6 +61,7 @@ try{
  await rpc('save',{collection:'requests',record:{id:'request1',clientId:'client1',vehicleId:'vehicle1',services:['service1'],status:'confirmed'}});
  await denied(()=>rpc('save',{collection:'requests',record:{id:'request1',clientId:'client1',vehicleId:'vehicle1',services:[],status:'draft'}}));
  await user(admin);data=await rpc('data');check(data.clients.length,0);check(data.users.length,3);check(data.workshops.find(x=>x.id===w1).counts.clients,2);
+ check(data.monitor.workshops.find(x=>x.id===w1).plans,1);check(data.monitor.workshops.find(x=>x.id===w1).overdue,0);check(data.monitor.workshops.find(x=>x.id===w1).drafts,0);check(data.monitor.activity.some(x=>x.workshop===w1),true);check(data.monitor.appointments.every(x=>!('clientId' in x)),true);
  await rpc('decision',{id:w1,status:'rejected'});await user(one);await denied(()=>rpc('data'));
  await user('', 'anon');await denied(()=>rpc('data'));
  console.log(`${count} comprobaciones PostgreSQL superadas, sin envíos externos.`);

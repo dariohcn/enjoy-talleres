@@ -63,6 +63,25 @@ try{
  await user(admin);data=await rpc('data');check(data.clients.length,0);check(data.users.length,3);check(data.workshops.find(x=>x.id===w1).counts.clients,2);
  check(data.monitor.workshops.find(x=>x.id===w1).plans,1);check(data.monitor.workshops.find(x=>x.id===w1).overdue,0);check(data.monitor.workshops.find(x=>x.id===w1).drafts,0);check(data.monitor.activity.some(x=>x.workshop===w1),true);check(data.monitor.appointments.every(x=>!('clientId' in x)),true);
 
+
+ await user(one);check((await rpc('data')).productPermission,'read');
+ const product={name:'Producto prueba',sku:'DEMO-1',category:'Insumos',price:'12.50',stock:'3',image:'data:image/jpeg;base64,/9j/AA==',active:true};
+ await denied(()=>rpc('product-save',product));await denied(()=>rpc('product-permission',{id:w1,permission:'manage'}));
+ await rpc('workshop-image',{image:product.image});check((await rpc('data')).workshopImage,product.image);
+ await denied(()=>rpc('workshop-image',{image:'data:image/svg+xml,<svg/>'}));
+ await user(admin);await rpc('product-permission',{id:w1,permission:'publish'});
+ await rpc('product-save',{...product,name:'Producto de la plataforma',sku:'PLAT-1'});
+ await user(one);await rpc('product-save',product);data=await rpc('data');const ownProduct=data.products.find(p=>p.workshop===w1);check(!!ownProduct,true);check(data.products.some(p=>p.workshop===null),true);check(data.workshopId,w1);
+ await denied(()=>rpc('product-remove',{id:ownProduct.id}));
+ await denied(()=>rpc('product-save',{...product,price:'-1'}));await denied(()=>rpc('product-save',{...product,stock:'1.5'}));
+ await user(two);check((await rpc('data')).products.some(p=>p.workshop===w1),false);
+ await user(admin);await rpc('product-permission',{id:w2,permission:'manage'});await user(two);
+ await denied(()=>rpc('product-save',{...product,id:ownProduct.id}));await denied(()=>rpc('product-remove',{id:ownProduct.id}));
+ await user(admin);await rpc('product-permission',{id:w1,permission:'manage'});await user(one);await rpc('product-remove',{id:ownProduct.id});check((await rpc('data')).products.find(p=>p.id===ownProduct.id).active,false);
+ await user(admin);await rpc('product-permission',{id:w1,permission:'read'});await user(one);await denied(()=>rpc('product-save',{...product,id:ownProduct.id}));
+ await db.exec('reset role');await db.query('insert into auth.users values($1,$2,$3)',['10000000-0000-0000-0000-000000000004','image@example.test',JSON.stringify({name:'Taller con imagen',owner:'Responsable',location:'Loja',image:product.image,product_permission:'manage',role:'admin'})]);
+ check((await db.query("select w.image,w.product_permission from enjoy.workshops w join enjoy.profiles p on p.workshop=w.id where p.email='image@example.test'")).rows[0],{image:product.image,product_permission:'read'});
+ check((await db.query("select raw_user_meta_data ? 'image' as has_image from auth.users where email='image@example.test'")).rows[0].has_image,false);
  await user(two);await denied(()=>rpc('archive',{id:w1}));
  await user(admin);await rpc('archive',{id:w1});
  data=await rpc('data');check(!!data.workshops.find(x=>x.id===w1).deleted_at,true);check(data.workshops.find(x=>x.id===w1).counts.clients,2);
@@ -71,7 +90,7 @@ try{
  await user(admin);await rpc('restore',{id:w1});await user(one);check((await rpc('data')).clients.length,2);
  await user(admin);await denied(()=>rpc('restore',{id:w1}));
  await db.exec('reset role');await db.exec(await readFile(new URL('../supabase/EJEMPLOS.sql',import.meta.url),'utf8'));await db.exec(await readFile(new URL('../supabase/EJEMPLOS.sql',import.meta.url),'utf8'));
- check((await db.query('select count(*)::int n from enjoy.workshops where is_demo')).rows[0].n,4);
+ check((await db.query('select count(*)::int n from enjoy.workshops where is_demo')).rows[0].n,5);
  check((await db.query("select count(*)::int n from enjoy.profiles p join enjoy.workshops w on p.workshop=w.id where w.is_demo")).rows[0].n,0);
  check((await db.query("select count(*)::int n from enjoy.records r join enjoy.workshops w on r.workshop=w.id where w.is_demo and r.collection='appointments'")).rows[0].n,48);
  check((await db.query('select count(*)::int n from enjoy.reminders r join enjoy.workshops w on w.id=r.workshop where w.is_demo')).rows[0].n,0);

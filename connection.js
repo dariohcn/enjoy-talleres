@@ -38,7 +38,7 @@ const EnjoyConnection = (() => {
       if((b.password||'').length<10)throw Error('La contraseña debe tener al menos 10 caracteres.');
       for(const k of ['name','owner','email','location'])if(!String(b[k]||'').trim())throw Error('Complete los datos requeridos.');
       if(b.whatsappOptIn&&!/^[1-9]\d{7,14}$/.test(String(b.phone||'').replace(/[^0-9]/g,'')))throw Error('Ingrese WhatsApp con código de país.');
-      await request('/auth/v1/signup',{email:b.email.trim(),password:b.password,data:{name:b.name,owner:b.owner,location:b.location,phone:b.phone||'',whatsappOptIn:b.whatsappOptIn===true}});
+      await request('/auth/v1/signup',{email:b.email.trim(),password:b.password,data:{name:b.name,owner:b.owner,location:b.location,phone:b.phone||'',whatsappOptIn:b.whatsappOptIn===true,image:b.image||''}});
       return {ok:true};
     }
     if(path==='login'){

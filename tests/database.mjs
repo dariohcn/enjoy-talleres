@@ -62,6 +62,20 @@ try{
  await denied(()=>rpc('save',{collection:'requests',record:{id:'request1',clientId:'client1',vehicleId:'vehicle1',services:[],status:'draft'}}));
  await user(admin);data=await rpc('data');check(data.clients.length,0);check(data.users.length,3);check(data.workshops.find(x=>x.id===w1).counts.clients,2);
  check(data.monitor.workshops.find(x=>x.id===w1).plans,1);check(data.monitor.workshops.find(x=>x.id===w1).overdue,0);check(data.monitor.workshops.find(x=>x.id===w1).drafts,0);check(data.monitor.activity.some(x=>x.workshop===w1),true);check(data.monitor.appointments.every(x=>!('clientId' in x)),true);
+
+ await user(two);await denied(()=>rpc('archive',{id:w1}));
+ await user(admin);await rpc('archive',{id:w1});
+ data=await rpc('data');check(!!data.workshops.find(x=>x.id===w1).deleted_at,true);check(data.workshops.find(x=>x.id===w1).counts.clients,2);
+ await denied(()=>rpc('permission',{id:w1,catalog:true}));await denied(()=>rpc('decision',{id:w1,status:'approved'}));
+ await user(one);await denied(()=>rpc('session'));await denied(()=>rpc('data'));
+ await user(admin);await rpc('restore',{id:w1});await user(one);check((await rpc('data')).clients.length,2);
+ await user(admin);await denied(()=>rpc('restore',{id:w1}));
+ await db.exec('reset role');await db.exec(await readFile(new URL('../supabase/EJEMPLOS.sql',import.meta.url),'utf8'));await db.exec(await readFile(new URL('../supabase/EJEMPLOS.sql',import.meta.url),'utf8'));
+ check((await db.query('select count(*)::int n from enjoy.workshops where is_demo')).rows[0].n,4);
+ check((await db.query("select count(*)::int n from enjoy.profiles p join enjoy.workshops w on p.workshop=w.id where w.is_demo")).rows[0].n,0);
+ check((await db.query("select count(*)::int n from enjoy.records r join enjoy.workshops w on r.workshop=w.id where w.is_demo and r.collection='appointments'")).rows[0].n,48);
+ check((await db.query('select count(*)::int n from enjoy.reminders r join enjoy.workshops w on w.id=r.workshop where w.is_demo')).rows[0].n,0);
+ await user(admin);
  await rpc('decision',{id:w1,status:'rejected'});await user(one);await denied(()=>rpc('data'));
  await user('', 'anon');await denied(()=>rpc('data'));
  console.log(`${count} comprobaciones PostgreSQL superadas, sin envíos externos.`);

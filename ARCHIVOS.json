@@ -46,8 +46,8 @@
   },
   {
     "path": "crm.js",
-    "size": 61773,
-    "sha256": "628766a031ac5696e152d8569acaac4c7068ed004ee6deeb168b43d8d643f262"
+    "size": 65080,
+    "sha256": "cf34d6762196a66df4fc34eb4f8886c968eed9526a1f32ecfb4f106f6ae85d3c"
   },
   {
     "path": "favicon.svg",
@@ -56,8 +56,8 @@
   },
   {
     "path": "index.html",
-    "size": 2088,
-    "sha256": "eba546c6da23f73778e389bcf0fce628d54398c53c4f9f62f8bab6a55836290d"
+    "size": 2094,
+    "sha256": "371ff01e53e53d7545d37b211ad3a1f9c26338ba7a0e6325636e5f8379c9ca1f"
   },
   {
     "path": "package-lock.json",
@@ -81,8 +81,8 @@
   },
   {
     "path": "workspace.css",
-    "size": 34310,
-    "sha256": "fadea1e3035a34a00ae1f67840ebe829ba117b0a1d4fb660701ae49602299b4d"
+    "size": 35378,
+    "sha256": "d5b5958134227e002063e22a849847523efed20d40c6c3993d9670fa741657f2"
   },
   {
     "path": "assets/Barlow-Regular.ttf",
@@ -175,9 +175,14 @@
     "sha256": "815d9684d5db9666a19eb1edc5067105f68246d52e3fd7fc58ed1b28bebe86ce"
   },
   {
+    "path": "supabase/EJEMPLOS.sql",
+    "size": 2938,
+    "sha256": "4289eb55d73e4544db2159f4095671fe51f5d6a2c5269a45bf8b3fb8caecac4e"
+  },
+  {
     "path": "supabase/INSTALAR.sql",
-    "size": 22157,
-    "sha256": "3c6661e3f83a702fcfcc002b47fb7cd579433bc70847ef1d1daabd49f295b9bf"
+    "size": 24588,
+    "sha256": "ed69afa38f74725ebdff11c48ba01eb878eddc17131996c5a5d6fe78d02c923a"
   },
   {
     "path": "supabase/PANEL-ADMIN.sql",
@@ -188,6 +193,11 @@
     "path": "supabase/PROGRAMAR.sql",
     "size": 1536,
     "sha256": "295f35112f5608c369534276998bc7075df41eaff369c2af3f5b0472b833b85b"
+  },
+  {
+    "path": "supabase/RETIRAR-TALLER.sql",
+    "size": 2430,
+    "sha256": "cba56a28a0845bc71a1094ec9f93bc5c85c1400ec9439e0d28a90281cf0ec22a"
   },
   {
     "path": "supabase/config.toml",
@@ -206,8 +216,8 @@
   },
   {
     "path": "tests/database.mjs",
-    "size": 8551,
-    "sha256": "6ccfeb45077ffba6c338a5c6d298387933234edc6d00fe2d5a23fcd8c8ef275b"
+    "size": 9966,
+    "sha256": "fba7c20fdce900a9d9300669aae889f2c54e96345c9ea37b75644976f643c522"
   },
   {
     "path": "tests/reminders.mjs",

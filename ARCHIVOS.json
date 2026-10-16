@@ -25,6 +25,11 @@
     "sha256": "ecab639d47acc4cdeee54eb49e7db9deb3c78ab0063fb9e52f21b17ae510d4f7"
   },
   {
+    "path": "access.css",
+    "size": 9021,
+    "sha256": "5af870a2ac7a7945827d4808f46cf723fe89c8c70a2d07c7ebfa69ef6b5c2d74"
+  },
+  {
     "path": "config.js",
     "size": 161,
     "sha256": "f140f8bc0e2b9525eb161119a01de1facb5c4aa07da59d20b433cb67b05a1a2b"
@@ -41,8 +46,8 @@
   },
   {
     "path": "crm.js",
-    "size": 50439,
-    "sha256": "d3ed6c37fcd2642d384a3b141eae1f12068d1608c2737a4c83c6744bffa3659e"
+    "size": 50668,
+    "sha256": "e4afc82edaee8c77f1fa4088dab3f2e6d9288bf06da518cbd86524267177a928"
   },
   {
     "path": "favicon.svg",
@@ -51,8 +56,8 @@
   },
   {
     "path": "index.html",
-    "size": 1768,
-    "sha256": "9c052a7d7a5328b3359d126d1f2ecf37bdc1ee44ab80ce2a8b3421b6ef3e4a79"
+    "size": 1815,
+    "sha256": "0e864169b8921efb4b93539af97221a301221b401c3e88a4eab5d2b05daffcb6"
   },
   {
     "path": "package-lock.json",

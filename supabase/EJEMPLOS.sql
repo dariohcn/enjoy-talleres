@@ -22,3 +22,8 @@ begin
   insert into enjoy.audit(workshop,action) values(w,'Taller de ejemplo incorporado con datos ficticios');
  end loop;
 end $examples$;
+
+-- Pending example makes the approval workflow available for evaluation.
+insert into enjoy.workshops(name,owner,email,location,status,catalog,is_demo)
+select 'Ejemplo · Taller en evaluación','Solicitante ficticio','solicitante@example.invalid','Loja','pending',false,true
+where not exists(select 1 from enjoy.workshops where is_demo and name='Ejemplo · Taller en evaluación');

@@ -56,8 +56,8 @@
   },
   {
     "path": "index.html",
-    "size": 2081,
-    "sha256": "04344ccf9a6b4096a1507343a411eb00079b6fda276d17d709742b0ac469d60c"
+    "size": 2088,
+    "sha256": "bc4c2205f45c2728f3ba32973e664739fba94282ac0215c9478e17c4275a6e87"
   },
   {
     "path": "package-lock.json",

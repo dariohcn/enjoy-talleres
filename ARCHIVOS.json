@@ -46,8 +46,8 @@
   },
   {
     "path": "crm.js",
-    "size": 81581,
-    "sha256": "3fbc2ce8d6bdede4aa6f0c18ea0c73c09d5e4c84d3eda48b840a3a4e559b934a"
+    "size": 81906,
+    "sha256": "c11ff579b1f87f8ac25b247b26b0b53415d31722b567cc6e6bef5b3c6b22e9ce"
   },
   {
     "path": "favicon.svg",
@@ -56,8 +56,8 @@
   },
   {
     "path": "index.html",
-    "size": 2086,
-    "sha256": "4db2394f16aafa7e7c02884f04379850c46a6da71b8c136cc4d4097146a4ce6c"
+    "size": 2081,
+    "sha256": "04344ccf9a6b4096a1507343a411eb00079b6fda276d17d709742b0ac469d60c"
   },
   {
     "path": "package-lock.json",
@@ -81,8 +81,8 @@
   },
   {
     "path": "workspace.css",
-    "size": 48295,
-    "sha256": "9bb5087a2c605740c948d871ec4a809aa4b21f12a5f7d34999bd114757a14dfa"
+    "size": 56990,
+    "sha256": "d43ece70b0fb2bf8f26aa0dbb825692d6d5cb56549a04d89808878ed3f6b692a"
   },
   {
     "path": "assets/Barlow-Regular.ttf",
